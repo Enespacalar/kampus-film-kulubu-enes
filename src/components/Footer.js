@@ -5,7 +5,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="app-footer">
-      <p>Buraya Adını Soyadını Yaz</p>
+      <p>Enes Paçalar</p>
     </footer>
   );
 };
