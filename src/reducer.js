@@ -4,10 +4,16 @@ export const initialState = {
   isLoading: true,
   isError: false,
   data: [],
-  query: 'friends', // Uygulama açılışta 'friends' sorgusuyla başlar [cite: 30]
+  query: 'friends',
   watchlist: [],
-  pageSize: 6, // Her sayfada 6 dizi olacak [cite: 38]
+  pageSize: 6,
   currentPage: 1,
+  // YENİ EKLENEN KISIM:
+  filters: {
+    genre: '',
+    language: '',
+    rating: 0,
+  },
 };
 
 export const reducer = (state, action) => {
@@ -20,9 +26,16 @@ export const reducer = (state, action) => {
       return { ...state, isLoading: false, isError: true };
     case 'SET_QUERY':
       return { ...state, query: action.payload, currentPage: 1 };
+    // FİLTRELEME İÇİN EYLEM:
+    case 'SET_FILTERS':
+      return {
+        ...state,
+        filters: { ...state.filters, ...action.payload },
+        currentPage: 1, // Filtre değişince ilk sayfaya dön
+      };
     case 'ADD_WATCHLIST':
       if (state.watchlist.find((item) => item.show.id === action.payload.show.id)) {
-        return state; // Zaten varsa ekleme
+        return state;
       }
       return { ...state, watchlist: [...state.watchlist, action.payload] };
     case 'REMOVE_WATCHLIST':

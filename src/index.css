@@ -249,3 +249,30 @@ body {
   color: white;
   margin-top: 20px;
 }
+/* src/index.css dosyasının EN ALTINA ekle */
+
+.filters-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap; /* Küçük ekranlarda alt satıra geçsin */
+}
+
+.filters-box input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+/* Number input'undaki okları kaldır (isteğe bağlı) */
+.filters-box input[type=number] {
+  -moz-appearance: textfield;
+}
+.filters-box input::-webkit-outer-spin-button,
+.filters-box input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
